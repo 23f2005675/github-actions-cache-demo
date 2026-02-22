@@ -20,10 +20,10 @@ jobs:
           key: cache-53df36f
 
       - name: prime-cache-53df36f
-        run: echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
+        run: echo "Cache hit ${{ steps.cache-step.outputs.cache-hit }}"
 
-      - name: Create dummy dependency (to prime cache)
+      - name: Prime cache files
         if: steps.cache-step.outputs.cache-hit != 'true'
         run: |
           mkdir -p ~/.cache/my-deps
-          echo "my dependency data" > ~/.cache/my-deps/dep.txt
+          echo "cached" > ~/.cache/my-deps/dep.txt
